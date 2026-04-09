@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khopa | Starplan</title>
+    <meta name="description" content="Case study for Starplan, a WiFi planning and localization engine.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script src="../assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <div class="site-bg" aria-hidden="true">
+      <div class="site-bg__aurora site-bg__aurora--one"></div>
+      <div class="site-bg__aurora site-bg__aurora--two"></div>
+      <div class="site-bg__grid"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark">K</span>
+          <span class="brand__text">Khopa</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="site-menu" data-menu>
+          <a href="./index.html">Portfolio</a>
+          <a href="../resume/index.html">Resume</a>
+          <a href="../blog/index.html">Blog</a>
+          <a href="../apps/index.html">Apps</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="container project-case">
+        <section class="page-hero" data-reveal>
+          <p class="eyebrow">Portfolio</p>
+          <h1>Starplan</h1>
+          <p>WiFi planning, radio heatmaps, and indoor localization tooling.</p>
+        </section>
+
+        <section class="project-hero-card" data-reveal>
+          <div class="project-summary">
+            <p class="eyebrow">WiFi Planning</p>
+            <h2>Turning radio behavior into usable planning tools</h2>
+            <p>
+              Starplan focused on WiFi and radio planning, heatmap generation, and localization features for enterprise environments.
+            </p>
+            <p>
+              Projects like this are interesting because they sit between algorithmic logic, visualization, and practical deployment questions: coverage, positioning, radio realism, and usability for operators.
+            </p>
+            <ul class="project-facts">
+              <li>WiFi</li>
+              <li>Heatmaps</li>
+              <li>Localization</li>
+              <li>Enterprise</li>
+            </ul>
+          </div>
+
+          <div class="project-cover">
+            <div class="project-cover__media project-cover__media--shot shot shot--forge">
+              <span>Radio planning and localization</span>
+            </div>
+            <p class="project-cover__caption">Coverage analysis, mapping, and device-location workflows for enterprise networking.</p>
+          </div>
+        </section>
+
+        <section class="project-panel" data-reveal>
+          <p class="eyebrow">Why It Matters</p>
+          <h2>Networking software is also a visualization problem</h2>
+          <p>
+            Beyond backend logic, tools in this space need to communicate technical information clearly: coverage zones, radio behavior, and location signals only become useful when operators can read and trust what they see. And Wifi coverage is not always entirely intuitive.
+          </p>
+          <div class="project-links">
+            <a class="button button--secondary" href="./index.html">Back to portfolio</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Khopa</p>
+        <p>&copy; <span data-year></span> Khopa</p>
+      </div>
+    </footer>
+  </body>
+</html>

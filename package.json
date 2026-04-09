@@ -1,0 +1,9 @@
+{
+  "name": "khopa.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:blog": "node scripts/build-blog.mjs",
+    "build": "node scripts/build-blog.mjs"
+  }
+}

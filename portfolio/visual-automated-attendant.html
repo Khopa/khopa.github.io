@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khopa | Visual Automated Attendant</title>
+  <meta name="description"
+    content="Case study for Visual Automated Attendant, an enterprise visual IVR and call-routing product.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script src="../assets/js/site.js" defer></script>
+</head>
+
+<body>
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__aurora site-bg__aurora--one"></div>
+    <div class="site-bg__aurora site-bg__aurora--two"></div>
+    <div class="site-bg__grid"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="../index.html">
+        <span class="brand__mark">K</span>
+        <span class="brand__text">Khopa</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="site-menu" data-menu>
+        <a href="./index.html">Portfolio</a>
+        <a href="../resume/index.html">Resume</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../apps/index.html">Apps</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container project-case">
+      <section class="page-hero" data-reveal>
+        <p class="eyebrow">Portfolio</p>
+        <h1>ALE Visual Automated Attendant</h1>
+        <p>A visual IVR and call-routing product I worked on for Alcatel-Lucent Enterprise.</p>
+      </section>
+
+      <section class="project-hero-card" data-reveal>
+        <div class="project-summary">
+          <h2>Context</h2>
+          <p>
+            Visual Automated Attendant was used to build automated call flows through a web-based visual editor. 
+          </p>
+          <p>
+            I took over the project that had originated from ALE Proserv team in USA. Around 2017, the foundation were there, but it was just leaving prototyping phase.
+            I quickly became the only and main developer on it, doing a mix of feature work, maintenance, support, and product hardening.
+          </p>
+          <ul class="project-facts">
+            <li>Java</li>
+            <li>Javascript</li>
+            <li>VXML</li>
+            <li>Linux/SuSE</li>
+            <li>PostgreSQL</li>
+            <li>C++</li>
+          </ul>
+        </div>
+
+        <div class="project-cover">
+          <div class="project-cover__media">
+            <button class="project-image-button" type="button" data-lightbox-src="../assets/images/portfolio/vaa_0.png"
+              data-lightbox-alt="Visual Automated Attendant editor view"
+              aria-label="Open Visual Automated Attendant editor screenshot full screen">
+              <img src="../assets/images/portfolio/vaa_0.png" alt="Visual Automated Attendant editor view">
+            </button>
+          </div>
+          <p class="project-cover__caption">Web editor and reporting workflow for enterprise call-routing scripts. Click
+            to enlarge.</p>
+        </div>
+      </section>
+
+      <section class="project-panel" data-reveal>
+        <h2>My work on the product</h2>
+
+        <p>
+          I maintained and extended the product as a full stack developer (Java, Javascript, C++, Platform & System). I worked on performance, direct support, bug fixing, high availability, and
+          database replication (PostgreSQL).
+        </p>
+
+        <p>
+          Some of the main features I implemented included:
+        </p>
+
+        <ul>
+          <li>Text to Speech and Automatic Speech Recognition features, with support for multiple engines and fallbacks</li>
+          <li>High availability and database replication features to support enterprise customers needs</li>
+          <li>Advanced reporting and analytics features to give insights on call handling and platform activity</li>
+          <li>HTTP, SMS, SQL connectors within the IVR, scripting & variables support, for advanced users and scenarios.</li>
+          <li>Real time license control (system license is sold with a given number of concurrent calls allowed)</li>
+        </ul>
+        
+      </section>
+
+      <section class="project-panel" data-reveal>
+        <h2>Challenges</h2>
+        <p>
+          One recurring challenge was the analytics and statistics part of the product. Performance could become an
+          issue quite quickly. I learned a lot there about PostgreSQL internals, query optimization. With hindsight, it is probably one of the parts I would
+          redesign many things differently today.
+        </p>
+        <p>
+          Speech features had a different kind of difficulty. TTS and ASR were valuable additions, but in practice
+          compatibility depended on external services and on constraints such as codec support. So the real work was not
+          just exposing those integrations in the UI, but making them behave properly in real telephony scenarios, streaming the data in real time & matching codecs with the audio stack and the connected PBX configuration (which was not always possible).
+        </p>
+        <p>
+          Another constraint was VXML compatibility. For internal reasons, and because some VAA components were also
+          used in the OpenTouch product, we had to keep VAA compatible with VXML and with OpenTouch's own VXML
+          implementation. In practice there was a VAA Standalone product, and a VAA version embedded inside OpenTouch.
+        </p>
+        <p>
+          More generally, the product had to sit somewhere in the middle: powerful enough for administrators and
+          integrators, but still understandable for less technical users who just needed to reason visually about a call
+          flow.
+        </p>
+      </section>
+
+      <section class="project-gallery" data-reveal>
+        <figure>
+          <button class="project-image-button" type="button" data-lightbox-src="../assets/images/portfolio/vaa_2.png"
+            data-lightbox-alt="Visual Automated Attendant call log interface"
+            aria-label="Open call log interface screenshot full screen">
+            <img src="../assets/images/portfolio/vaa_2.png" alt="Visual Automated Attendant reporting interface">
+          </button>
+          <figcaption>Call log views used to inspect platform activity and call handling.</figcaption>
+        </figure>
+        <figure>
+          <button class="project-image-button" type="button" data-lightbox-src="../assets/images/portfolio/vaa_3.png"
+            data-lightbox-alt="Visual Automated Attendant activity reporting interface"
+            aria-label="Open reporting interface screenshot full screen">
+            <img src="../assets/images/portfolio/vaa_3.png" alt="Visual Automated Attendant reporting interface">
+          </button>
+          <figcaption>Reporting and analytics views used to inspect platform activity.</figcaption>
+        </figure>
+      </section>
+
+      <section class="project-panel" data-reveal>
+        <h2>Results</h2>
+        <p>
+          VAA was commercially successful by ALE standards. End users and customers really
+          liked it because it made this kind of telephony configuration much easier to approach. For ALE's business partners and integrators it was also a gain of time.
+        </p>
+        <p>
+          It helped bridge the gap between technical specialists and less
+          technical users. Later, a successor product called Visual Notification Assistant (VNA) was started. I was
+          involved at the beginning of it, and using my experience on VAA, I helped lay the foundations for both its visual editor and its engine.
+        </p>
+        <div class="project-links">
+          <a class="button button--secondary" href="https://www.al-enterprise.com/en/products/applications/visual-automated-attendant">Official VAA product page</a>
+          <a class="button button--secondary" href="https://www.al-enterprise.com/en/products/applications/visual-notification-assistant">VNA product page</a>
+        </div>
+      </section>
+
+      <section class="project-panel project-panel--media" data-reveal>
+        <div class="project-embed">
+          <iframe
+            src="https://www.youtube.com/embed/A9C4r4_ZH3o?rel=0"
+            title="Visual Automated Attendant product demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="project-gallery" data-reveal>
+        <figure>
+          <button class="project-image-button" type="button" data-lightbox-src="../assets/images/portfolio/vaa_1.png"
+            data-lightbox-alt="Visual Automated Attendant main editor interface"
+            aria-label="Open main editor interface screenshot full screen">
+            <img src="../assets/images/portfolio/vaa_1.png" alt="Visual Automated Attendant main editor interface">
+          </button>
+          <figcaption>Text to Speech integration allowed to use a local engine, or a remote third party cloud services.
+          </figcaption>
+        </figure>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>Khopa</p>
+      <p>&copy; <span data-year></span> Khopa</p>
+    </div>
+  </footer>
+</body>
+
+</html>

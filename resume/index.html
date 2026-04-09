@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khopa | Resume</title>
+    <meta
+      name="description"
+      content="Resume of Clement Perreau, software engineer and engineering manager."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script src="../assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <div class="site-bg" aria-hidden="true">
+      <div class="site-bg__aurora site-bg__aurora--one"></div>
+      <div class="site-bg__aurora site-bg__aurora--two"></div>
+      <div class="site-bg__grid"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark">K</span>
+          <span class="brand__text">Khopa</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="site-menu" data-menu>
+          <a href="../portfolio/index.html">Portfolio</a>
+          <a href="./index.html">Resume</a>
+          <a href="../blog/index.html">Blog</a>
+          <a href="../apps/index.html">Apps</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="resume-page">
+      <div class="container">
+        <section class="resume-hero" data-reveal>
+          <div class="resume-hero__layout">
+            <div class="resume-hero__content">
+              <h1>Clément Perreau</h1>
+              <p class="resume-hero__role">Software engineer and engineering manager with 10 years of experience in industry software development.</p>
+              <p>
+                Passionate about technology since childhood, I thrive on problem solving, knowledge sharing, product success, and customer experience.
+              </p>
+              <p>
+                My background spans hands-on software development, engineering leadership, and project delivery in multi-disciplinary and international environments.
+              </p>
+              <ul class="resume-meta">
+                <li>
+                  <span class="resume-meta__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Zm0-8.25A2.75 2.75 0 1 0 12 7.25a2.75 2.75 0 0 0 0 5.5Z"/>
+                    </svg>
+                  </span>
+                  <span>Brest, France</span>
+                </li>
+                <li>
+                  <span class="resume-meta__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M6.94 8.5A1.56 1.56 0 1 1 6.93 5.38a1.56 1.56 0 0 1 .01 3.12ZM5.6 9.69h2.67V18H5.6V9.69Zm4.34 0H12.5v1.14h.04c.36-.68 1.24-1.4 2.56-1.4 2.74 0 3.25 1.8 3.25 4.13V18h-2.67v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08V18H9.94V9.69Z"/>
+                    </svg>
+                  </span>
+                  <a href="https://www.linkedin.com/in/cl%C3%A9ment-perreau-48bb8184/">LinkedIn</a>
+                </li>
+                <li>
+                  <span class="resume-meta__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.45-1.11-1.45-.9-.62.07-.61.07-.61 1 .07 1.52 1.01 1.52 1.01.88 1.5 2.31 1.07 2.87.82.09-.63.35-1.07.63-1.31-2.22-.25-4.56-1.1-4.56-4.88 0-1.08.39-1.97 1.03-2.66-.11-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.56 1.38.21 2.4.1 2.65.64.69 1.03 1.58 1.03 2.66 0 3.79-2.34 4.62-4.57 4.87.36.31.68.92.68 1.86v2.77c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>
+                    </svg>
+                  </span>
+                  <a href="https://github.com/Khopa">github.com/Khopa</a>
+                </li>
+              </ul>
+              <!--<div class="resume-highlights">
+                <article class="resume-highlight">
+                  <p class="resume-highlight__value">10+</p>
+                  <p class="resume-highlight__label">Years in software engineering</p>
+                </article>
+                <article class="resume-highlight">
+                  <p class="resume-highlight__value">15</p>
+                  <p class="resume-highlight__label">Engineers led</p>
+                </article>
+                <article class="resume-highlight">
+                  <p class="resume-highlight__value">100k+</p>
+                  <p class="resume-highlight__label">Google Play downloads</p>
+                </article>
+              </div>-->
+            </div>
+
+            <aside class="resume-photo-card" aria-label="Profile photo">
+              <div class="resume-photo-card__frame">
+                <img class="resume-photo-card__image" src="../assets/images/profile.jpg" alt="Portrait of Clément Perreau">
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <div class="resume-shell">
+          <div class="resume-main">
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Experience</p>
+                  <h2>Professional Experience</h2>
+                </div>
+              </div>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div class="resume-entry__identity">
+                    <img class="resume-entry__logo" src="../assets/images/ale.png" alt="Alcatel-Lucent Enterprise logo">
+                    <div>
+                      <h3>Alcatel-Lucent Enterprise</h3>
+                      <p class="resume-entry__meta">Brest, France</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="resume-role-list">
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Head of Platform Infrastructure Engineering Department</h4>
+                        <!-- <p class="resume-entry__meta">Network Business Division</p> -->
+                      </div>
+                      <p class="resume-entry__meta">November 2026 - Present</p>
+                    </div>
+                    <p>
+                      Led international team of engineers, building and strengthening infrastructure components for ALE Omnivista Cloud Platform, and adapting them for on-prem deployment.
+                    </p>
+                    <ul class="resume-bullets">
+                      <li>Continue adapating existing Cloud Product for On-Prem and Private Cloud environments.</li>
+                      <li>Focus on scalability and performance optimization.</li>
+                      <li>Improved automated security auditing, and CI/CD practices.</li>
+                      <li>Worked on hardware specification for upcoming server offering.</li>
+                      <li>Coordinate the team activites with program management teams.</li>
+                    </ul>
+                  </section>
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Head of R&D</h4>
+                        <!-- <p class="resume-entry__meta">Network Business Division</p> -->
+                      </div>
+                      <p class="resume-entry__meta">Nov 2023 - October 2025</p>
+                    </div>
+                    <p>
+                      Led a team of 15 engineers building products for enterprise network management, configuration, predictive maintenance, and internal innovation.
+                    </p>
+                    <ul class="tag-row resume-tags">
+                      <li>Leadership</li>
+                      <li>Hiring</li>
+                      <li>Cloud</li>
+                      <li>Java</li>
+                      <li>Go</li>
+                      <li>Kubernetes</li>
+                    </ul>
+                    <ul class="resume-bullets">
+                      <li>Coordinate day-to-day engineering work, team priorities, coaching, and delivery execution.</li>
+                      <li>Hire and onboard new team members while mentoring apprentices and junior engineers.</li>
+                      <li>Represent the team with leadership and act as the main counterpart for support, product, architecture, training, and marketing teams.</li>
+                      <li>Supervise and contribute to Omnivista Cirrus 10, Omnivista Terra, Omnivista Network Advisor, Omnivista Stellar Asset Tracking, and internal proof-of-concept work around LLM-assisted tools and MCP servers.</li>
+                    </ul>
+                  </section>
+
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Software Development Team Lead</h4>
+                        <!-- <p class="resume-entry__meta">Network Business Division</p> -->
+                      </div>
+                      <p class="resume-entry__meta">Apr 2022 - Nov 2023</p>
+                    </div>
+                    <p>
+                      Managed a team of 4 to 6 software engineers developing a cloud platform for network services.
+                    </p>
+                    <ul class="tag-row resume-tags">
+                      <li>Team Lead</li>
+                      <li>Agile</li>
+                      <li>Architecture</li>
+                      <li>Quality</li>
+                    </ul>
+                    <ul class="resume-bullets">
+                      <li>Planned development work and contributed to effort and cost estimation.</li>
+                      <li>Facilitated agile ceremonies including daily meetings, sprint planning, and retrospectives.</li>
+                      <li>Contributed to technical and architectural decisions together with the broader engineering group.</li>
+                      <li>Supported hiring and tracked quality indicators across the platform.</li>
+                    </ul>
+                  </section>
+
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Cloud Software Engineer</h4>
+                        <!-- <p class="resume-entry__meta">Network Business Division</p> -->
+                      </div>
+                      <p class="resume-entry__meta">Nov 2020 - Apr 2022</p>
+                    </div>
+                    <p>
+                      Developed backend data-processing services for a cloud platform dedicated to enterprise network equipment management.
+                    </p>
+                    <ul class="tag-row resume-tags">
+                      <li>Java</li>
+                      <li>Quarkus</li>
+                      <li>PostgreSQL</li>
+                      <li>Kafka</li>
+                      <li>Kubernetes</li>
+                    </ul>
+                    <ul class="resume-bullets">
+                      <li>Improved performance across services, data flows, database configuration, and SQL queries.</li>
+                      <li>Handled bug fixing, maintenance, and technology watch activities.</li>
+                      <li>Worked on security remediation by reviewing pentest reports and introducing DevSecOps practices for automated vulnerability tracking.</li>
+                    </ul>
+                  </section>
+
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Full Stack Software Engineer</h4>
+                        <!-- <p class="resume-entry__meta">Communications Business Division</p> -->
+                      </div>
+                      <p class="resume-entry__meta">Apr 2017 - Nov 2020</p>
+                    </div>
+                    <p>
+                      Developed, maintained, and supported ALE Visual Automated Attendant, an interactive voice response server with a graphical editor for phone routing strategies.
+                    </p>
+                    <ul class="tag-row resume-tags">
+                      <li>Java</li>
+                      <li>AngularJS</li>
+                      <li>PostgreSQL</li>
+                      <li>VoIP/SIP</li>
+                    </ul>
+                    <ul class="resume-bullets">
+                      <li>Supported a platform capable of handling hundreds of thousands of calls every day.</li>
+                      <li>Delivered features including speech synthesis, speech recognition, statistics collection, and high availability.</li>
+                      <li>Balanced product maintenance, feature delivery, and customer support responsibilities.</li>
+                    </ul>
+                  </section>
+
+                  <section class="resume-role">
+                    <div class="resume-role__header">
+                      <div>
+                        <h4>Software Engineer, Professional Services &amp; Customization</h4>
+                        <p class="resume-entry__meta">Professional Services &amp; Customization</p>
+                      </div>
+                      <p class="resume-entry__meta">Jul 2015 - Apr 2017</p>
+                    </div>
+                    <p>
+                      Built custom software solutions around enterprise telephony technologies for high-profile customers including Banque de France, Société Générale, Groupama, CaixaBank, and Decathlon.
+                    </p>
+                    <ul class="tag-row resume-tags">
+                      <li>Java</li>
+                      <li>Spring Boot</li>
+                      <li>AngularJS</li>
+                      <li>Customer Support</li>
+                    </ul>
+                    <ul class="resume-bullets">
+                      <li>Delivered tailor-made software for sensitive customer environments.</li>
+                      <li>Installed solutions on site and provided direct customer support.</li>
+                    </ul>
+                  </section>
+                </div>
+              </article>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Additional</p>
+                  <h2>Projects &amp; Side Work</h2>
+                </div>
+              </div>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div>
+                    <h3>Dwarves Manager</h3>
+                    <p class="resume-entry__meta">Independent publishing</p>
+                  </div>
+                  <p class="resume-entry__meta">Ongoing</p>
+                </div>
+                <p>
+                  Open source game available on Google Play and Itch.io with over 100k downloads.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Android</li>
+                  <li>Game Dev</li>
+                  <li>Indie Projects</li>
+                </ul>
+              </article>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div>
+                    <h3>DCS Liberation for DCS World</h3>
+                    <p class="resume-entry__meta">Developer for a community modding project</p>
+                  </div>
+                  <p class="resume-entry__meta">2018 - 2022</p>
+                </div>
+                <p>
+                  Contributed as a developer to DCS Liberation, a dynamic campaign generator for the military flight simulator DCS World.
+                  The project produces milsim-oriented missions with complex objectives, realistic adversary packages, layered air-defense networks, and electronic warfare and SEAD gameplay within the simulator's constraints, across a wide range of aircraft and mission profiles.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Python</li>
+                  <li>Javascript</li>
+                </ul>
+              </article>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div>
+                    <h3>Open Source and Hackathons</h3>
+                    <p class="resume-entry__meta">Community contribution</p>
+                  </div>
+                  <p class="resume-entry__meta">Ongoing</p>
+                </div>
+                <p>
+                  Occasional open-source contributor with additional experience in hackathons and rapid prototyping.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Hackathons</li>
+                  <li>Open Source</li>
+                </ul>
+              </article>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Internships</p>
+                  <h2>Early Experience</h2>
+                </div>
+              </div>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div class="resume-entry__identity">
+                    <img class="resume-entry__logo" src="../assets/images/ale.png" alt="Alcatel-Lucent Enterprise logo">
+                    <div>
+                      <h3>Software Engineering Intern</h3>
+                      <p class="resume-entry__meta">Alcatel-Lucent Enterprise, Brest, France</p>
+                    </div>
+                  </div>
+                  <p class="resume-entry__meta">H1 2015</p>
+                </div>
+                <p>
+                  Developed an Android application dedicated to lone-worker safety.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Java</li>
+                  <li>Android</li>
+                  <li>Objective C</li>
+                  <li>iOS</li>
+                </ul>
+              </article>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div class="resume-entry__identity">
+                    <img class="resume-entry__logo" src="../assets/images/ale.png" alt="Alcatel-Lucent logo">
+                    <div>
+                      <h3>Software Developer Intern</h3>
+                      <p class="resume-entry__meta">Alcatel-Lucent, Brest, France</p>
+                    </div>
+                  </div>
+                  <p class="resume-entry__meta">H1 2014</p>
+                </div>
+                <p>
+                  Built an open-space noise detection application with Bluetooth-based location features.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Java</li>
+                  <li>Scala</li>
+                  <li>Bluetooth</li>
+                  <li>Android</li>
+                </ul>
+              </article>
+
+              <article class="resume-entry">
+                <div class="resume-entry__header">
+                  <div class="resume-entry__identity">
+                    <img class="resume-entry__logo" src="../assets/images/thales.png" alt="Thales logo">
+                    <div>
+                      <h3>Java Developer Intern</h3>
+                      <p class="resume-entry__meta">Thales Airborne Systems, Brest, France</p>
+                    </div>
+                  </div>
+                  <p class="resume-entry__meta">Summer 2013</p>
+                </div>
+                <p>
+                  Developed an Eclipse plugin to calculate software architecture metrics on a component framework shared by Thales and DCNS.
+                </p>
+                <ul class="tag-row resume-tags">
+                  <li>Java</li>
+                  <li>Eclipse RCP</li>
+                  <li>Software Architecture</li>
+                </ul>
+              </article>
+            </section>
+          </div>
+
+          <aside class="resume-side">
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Education</p>
+                  <h2>Education</h2>
+                </div>
+              </div>
+
+              <article class="resume-entry resume-entry--education">
+                <div class="resume-entry__education-grid">
+                  <img class="resume-entry__logo" src="../assets/images/enib.jpg" alt="ENIB logo">
+                  <div class="resume-entry__education-body">
+                    <div class="resume-entry__education-head">
+                      <h3>Ecole Nationale d'Ingénieurs de Brest</h3>
+                      <p class="resume-entry__meta">2010 - 2015</p>
+                    </div>
+                    <p class="resume-entry__meta">Brest, France</p>
+                  </div>
+                  <p class="resume-entry__education-summary">Preparatory coursework, Software development, Electronics, and Mechatronics.</p>
+                  <ul class="resume-entry__education-tags">
+                      <li>Software Engineering</li>  
+                      <li>Electronic Engineering</li>
+                      <li>Mechanical Engineering</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="resume-entry resume-entry--education">
+                <div class="resume-entry__education-grid">
+                  <img class="resume-entry__logo" src="../assets/images/udes.png" alt="Universite de Sherbrooke logo">
+                  <div class="resume-entry__education-body">
+                    <div class="resume-entry__education-head">
+                      <h3>Université de Sherbrooke</h3>
+                      <p class="resume-entry__meta">2014 Autumn Semester</p>
+                    </div>
+                    <p class="resume-entry__meta">Sherbrooke, Canada</p>
+                  </div>
+                  <p class="resume-entry__education-summary">
+                    Exchange student in software engineering.
+                  </p>
+                  <ul class="resume-entry__education-tags">
+                      <li>Software Engineering</li>
+                      <li>Java</li>
+                      <li>Ruby on Rails</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="resume-entry resume-entry--education">
+                <div class="resume-entry__education-grid">
+                  <img class="resume-entry__logo" src="../assets/images/kn.png" alt="Lycee Naval logo">
+                  <div class="resume-entry__education-body">
+                    <div class="resume-entry__education-head">
+                      <h3>Lycée Naval - Marine Nationale</h3>
+                      <p class="resume-entry__meta">2007 - 2010</p>
+                    </div>
+                    <p class="resume-entry__meta">France</p>
+                  </div>
+                  <p class="resume-entry__education-summary">Science baccalaureate with a mathematics specialization.</p>
+                </div>
+              </article>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Skills</p>
+                  <h2>Core Strengths</h2>
+                </div>
+              </div>
+              <ul class="resume-groups resume-groups--skills">
+                <li>
+                  <strong>Management</strong>
+                  Engineering leadership, technical hiring, mentoring, agile delivery, project planning, stakeholder communication, cross-functional coordination
+                </li>
+                <li>
+                  <strong>Backend</strong>
+                  Java, Python, Go, Spring Boot, Quarkus, Kafka, REST services, event-driven services, performance tuning
+                </li>
+                <li>
+                  <strong>Databases</strong>
+                  PostgreSQL, TimescaleDB, MongoDB, MariaDB, MySQL, Redis, SQL optimization, schema and query performance
+                </li>
+                <li>
+                  <strong>Frontend</strong>
+                  JavaScript, TypeScript, HTML/CSS, Angular, Vue
+                </li>
+                <li>
+                  <strong>Architecture</strong>
+                  SaaS platforms, distributed systems, microservices, scalability, cloud and on-prem deployment models, enterprise networking domain knowledge
+                </li>
+                <li>
+                  <strong>Platform &amp; Operations</strong>
+                  Kubernetes, Helm, Docker, Linux, CI/CD, deployment automation, cloud and on-prem operations
+                </li>
+                <li>
+                  <strong>Engineering Practices</strong>
+                  Testing, TDD, design by contract, maintainability, reliability, and performance optimization
+                </li>
+                <li>
+                  <strong>Security</strong>
+                  DevSecOps, SBOM, vulnerability management, secure development
+                </li>
+                <li>
+                  <strong>Legal</strong>
+                  GDPR, CCPA, NIS 2, knowledgeable about current data protection & security requirements in enterprise software environments
+                </li>
+              </ul>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Languages</p>
+                  <h2>Languages</h2>
+                </div>
+              </div>
+              <div class="skill-meter-list skill-meter-list--compact">
+                <div class="skill-meter" style="--level: 100%">
+                  <div class="skill-meter__head">
+                    <span>French</span>
+                    <span>Native</span>
+                  </div>
+                  <div class="skill-meter__track"><span></span></div>
+                </div>
+                <div class="skill-meter" style="--level: 90%">
+                  <div class="skill-meter__head">
+                    <span>English</span>
+                    <span>Fluent (TOEIC 980/990)</span>
+                  </div>
+                  <div class="skill-meter__track"><span></span></div>
+                </div>
+                <div class="skill-meter" style="--level: 15%">
+                  <div class="skill-meter__head">
+                    <span>German</span>
+                    <span>Basic</span>
+                  </div>
+                  <div class="skill-meter__track"><span></span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Other</p>
+                  <h2>Additional Information</h2>
+                </div>
+              </div>
+              <ul class="resume-groups">
+                <li><strong>Driving licence</strong></li>
+                <li><strong>Interests</strong> Science, technology, home automation, electronics, painting, drawing, 3D art, cinema, board games, video games, travel, family</li>
+              </ul>
+            </section>
+
+            <section class="resume-section" data-reveal>
+              <div class="resume-section__title">
+                <div>
+                  <p class="eyebrow">Links</p>
+                  <h2>Quick Links</h2>
+                </div>
+              </div>
+              <ul class="resume-groups">
+                <li><strong>Portfolio</strong><a href="../portfolio/index.html">View selected work</a></li>
+                <li><strong>GitHub</strong><a href="https://github.com/Khopa">Profile</a></li>
+                <li><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/cl%C3%A9ment-perreau-48bb8184/">Profile</a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Khopa</p>
+        <p>&copy; <span data-year></span> Khopa</p>
+      </div>
+    </footer>
+  </body>
+</html>

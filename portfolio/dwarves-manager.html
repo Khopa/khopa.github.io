@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khopa | Dwarves Manager</title>
+    <meta name="description" content="Case study for Dwarves Manager, an Android management simulation game.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script src="../assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <div class="site-bg" aria-hidden="true">
+      <div class="site-bg__aurora site-bg__aurora--one"></div>
+      <div class="site-bg__aurora site-bg__aurora--two"></div>
+      <div class="site-bg__grid"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark">K</span>
+          <span class="brand__text">Khopa</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="site-menu" data-menu>
+          <a href="./index.html">Portfolio</a>
+          <a href="../resume/index.html">Resume</a>
+          <a href="../blog/index.html">Blog</a>
+          <a href="../apps/index.html">Apps</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="container project-case">
+        <section class="page-hero" data-reveal>
+          <p class="eyebrow">Portfolio</p>
+          <h1>Dwarves Manager</h1>
+          <p>Android game with more than 100,000 downloads.</p>
+        </section>
+
+        <section class="project-hero-card" data-reveal>
+          <div class="project-summary">
+            <p>
+              Dwarves Manager was an Android management simulation game released in 2013, inspired by sandbox management games but adapted to a mobile experience.
+              It started as a student project at ENIB, but I took it beyond and released the full game on the Play Store, where it reached more than 100,000 downloads. It was a small project but it was a great learning experience and a lot of fun to work sleepless nights on.
+            </p>
+            <p>
+              The game is actually very rough as of today standard, it has many issues and does not work well on modern Android devices (screen resolution issues). It is not available on Play Store anymore, due to API changes in Android. A sequel is currently in development, building on the same concept with a broader scope and more polished execution.    
+            </p>
+            <p>
+              The game also featured original graphics and design from myself, and original music composed by a friend.
+            </p>
+          </div>
+
+          <div class="project-cover">
+            <div class="project-cover__pair">
+              <div class="project-cover__media">
+                <button
+                  class="project-image-button"
+                  type="button"
+                  data-lightbox-src="../assets/images/portfolio/dwgmp.jpg"
+                  data-lightbox-alt="Dwarves Manager screenshoot"
+                  aria-label="Open Dwarves Manager screenshoot full screen"
+                >
+                  <img src="../assets/images/portfolio/dwgmp.jpg" alt="Dwarves Manager screenshoot">
+                </button>
+              </div>
+              <div class="project-cover__media">
+                <button
+                  class="project-image-button"
+                  type="button"
+                  data-lightbox-src="./dwm.png"
+                  data-lightbox-alt="Dwarves Manager screenshot"
+                  aria-label="Open Dwarves Manager screenshot full screen"
+                >
+                  <img src="./assets/images/portfolio/dwm.png" alt="Dwarves Manager screenshot">
+                </button>
+              </div>
+            </div>
+            <p class="project-cover__caption">Screenshoots from the original Android version.</p>
+          </div>
+        </section>
+
+        <section class="project-panel project-panel--media" data-reveal>
+          <h2>Dwarves Manager video</h2>
+          <p>
+            This is the game trailer that used to be shown on the Play Store page.
+          </p>
+          <div class="project-embed">
+            <iframe
+              src="https://www.youtube.com/embed/m_BUnHn5pdk?rel=0"
+              title="Dwarves Manager gameplay video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+
+        <section class="project-panel" data-reveal>
+          <h2>Other versions</h2>
+          <p>
+            I later uploaded other versions on <a href="https://khopa.itch.io/dwarves-manager">itch.io</a>, including PC and Mac OS builds.
+          </p>
+          <p>
+            And yes, there is also a NES version. To be clear, it is not really the same game, more like a different game made during a jam, but I found it funny to "port" Dwarves Manager to the NES.
+          </p>
+        </section>
+
+        <section class="project-gallery" data-reveal>
+          <figure>
+            <button
+              class="project-image-button"
+              type="button"
+              data-lightbox-src="../assets/images/portfolio/dwnes.png"
+              data-lightbox-alt="Dwarves Manager NES version screenshot"
+              aria-label="Open Dwarves Manager NES version screenshot full screen"
+            >
+              <img src="../assets/images/portfolio/dwnes.png" alt="Dwarves Manager NES version screenshot">
+            </button>
+            <figcaption>Screenshot from the NES jam version.</figcaption>
+          </figure>
+        </section>
+
+        <section class="project-panel project-panel--media" data-reveal>
+          <h2>Sequel in development</h2>
+          <p>
+            This video shows pre-alpha footage of Dwarves Manager II, but I paused development for now.
+          </p>
+          <div class="project-embed">
+            <iframe
+              src="https://www.youtube.com/embed/k9Zsn9-BUPg?rel=0"
+              title="Dwarves Manager sequel"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Khopa</p>
+        <p>&copy; <span data-year></span> Khopa</p>
+      </div>
+    </footer>
+  </body>
+</html>
