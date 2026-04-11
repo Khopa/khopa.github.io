@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="{{ assetPrefix }}/assets/css/site.css">
+    <script src="{{ assetPrefix }}/assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <div class="site-bg" aria-hidden="true">
+      <div class="site-bg__aurora site-bg__aurora--one"></div>
+      <div class="site-bg__aurora site-bg__aurora--two"></div>
+      <div class="site-bg__grid"></div>
+    </div>
+
+    {% include "partials/navbar.njk" %}
+
+    <main class="{{ bodyClass }}">
+      {% if mainContent %}
+        {{ mainContent | safe }}
+      {% else %}
+        {% block mainContent %}{% endblock %}
+      {% endif %}
+    </main>
+
+    {% include "partials/footer.njk" %}
+  </body>
+</html>

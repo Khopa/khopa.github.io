@@ -22,51 +22,54 @@
     </div>
 
     <header class="topbar">
-      <div class="container topbar__inner">
-        <a class="brand" href="../index.html">
-          <span class="brand__mark">K</span>
-          <span class="brand__text">Khopa</span>
-        </a>
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-menu"
-          data-menu-toggle
-        >
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="nav" id="site-menu" data-menu>
-          <a href="../portfolio/index.html">Portfolio</a>
-          <a href="../resume/index.html">Resume</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../apps/index.html">Apps</a>
-        </nav>
-      </div>
-    </header>
+  <div class="container topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Khopa home">
+      <span class="brand__mark">K</span>
+      <span class="brand__text">Khopa</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="site-menu" data-menu>
+      <a href="../portfolio/index.html">Portfolio</a>
+      <a href="../resume/index.html">Resume</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
+      <a href="../apps/index.html">Apps</a>
+    </nav>
+  </div>
+</header>
 
     <main class="blog-page">
       
+        
       <div class="container">
         <section class="blog-list__hero" data-reveal>
           <p class="eyebrow">Blog</p>
           <h1>Posts.</h1>
-          <p>No posts published yet.</p>
+          <p>Markdown in <code>content/blog/</code>. Static output.</p>
         </section>
-        <!--
         <section class="blog-list">
+          
         </section>
-        -->
       </div>
     
+      
     </main>
 
     <footer class="footer">
-      <div class="container footer__inner">
-        <p>Khopa</p>
-        <p>&copy; <span data-year></span> Khopa</p>
-      </div>
-    </footer>
+  <div class="container footer__inner">
+    <p></p>
+    <p>&copy; <span data-year></span> Khopa</p>
+  </div>
+</footer>
   </body>
 </html>

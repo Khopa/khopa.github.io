@@ -2,8 +2,12 @@
   "name": "khopa.github.io",
   "private": true,
   "type": "module",
+  "devDependencies": {
+    "nunjucks": "^3.2.4"
+  },
   "scripts": {
     "build:blog": "node scripts/build-blog.mjs",
+    "build:site": "node scripts/build-blog.mjs",
     "build": "node scripts/build-blog.mjs"
   }
 }

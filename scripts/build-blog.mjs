@@ -1,11 +1,68 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import nunjucks from "nunjucks";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
 const contentDir = path.join(rootDir, "content", "blog");
 const outputDir = path.join(rootDir, "blog");
+const templatesDir = path.join(rootDir, "templates");
+const nunjucksEnv = nunjucks.configure(templatesDir, {
+  autoescape: true,
+  noCache: true,
+});
+
+const staticPageConfigs = [
+  {
+    templatePath: "pages/index.njk",
+    outputPath: "index.html",
+    rootPrefix: ".",
+    currentSection: null,
+  },
+  {
+    templatePath: "pages/apps/index.njk",
+    outputPath: "apps/index.html",
+    rootPrefix: "..",
+    currentSection: "apps",
+  },
+  {
+    templatePath: "pages/resume/index.njk",
+    outputPath: "resume/index.html",
+    rootPrefix: "..",
+    currentSection: "resume",
+  },
+  {
+    templatePath: "pages/portfolio/index.njk",
+    outputPath: "portfolio/index.html",
+    rootPrefix: "..",
+    currentSection: "portfolio",
+  },
+  {
+    templatePath: "pages/portfolio/dwarves-manager.njk",
+    outputPath: "portfolio/dwarves-manager.html",
+    rootPrefix: "..",
+    currentSection: "portfolio",
+  },
+  {
+    templatePath: "pages/portfolio/starplan.njk",
+    outputPath: "portfolio/starplan.html",
+    rootPrefix: "..",
+    currentSection: "portfolio",
+  },
+  {
+    templatePath: "pages/portfolio/omnivista-cirrus-terra.njk",
+    outputPath: "portfolio/omnivista-cirrus-terra.html",
+    rootPrefix: "..",
+    currentSection: "portfolio",
+  },
+  {
+    templatePath: "pages/portfolio/visual-automated-attendant.njk",
+    outputPath: "portfolio/visual-automated-attendant.html",
+    rootPrefix: "..",
+    currentSection: "portfolio",
+  },
+];
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -30,7 +87,19 @@ async function main() {
     })
   );
 
-  console.log(`Generated ${posts.length} blog post(s) into ${path.relative(rootDir, outputDir)}.`);
+  await Promise.all(
+    staticPageConfigs.map((config) =>
+      writeFile(path.join(rootDir, config.outputPath), renderStaticPage(config))
+    )
+  );
+
+  console.log(
+    `Generated ${posts.length} blog post(s) into ${path.relative(rootDir, outputDir)} and rendered ${staticPageConfigs.length} static page(s) from Nunjucks templates.`
+  );
+}
+
+function renderStaticPage({ templatePath, rootPrefix, currentSection }) {
+  return renderTemplate(templatePath, createTemplateContext(rootPrefix, currentSection));
 }
 
 async function loadPosts() {
@@ -292,6 +361,7 @@ function renderBlogIndex(posts) {
     pageTitle: "Khopa | Blog",
     description: "Posts.",
     rootPrefix: "..",
+    currentSection: "blog",
     bodyClass: "blog-page",
     mainContent: `
       <div class="container">
@@ -332,6 +402,7 @@ function renderBlogPost(post, { prev, next }) {
     pageTitle: `${post.title} | Khopa`,
     description: post.excerpt,
     rootPrefix: "../..",
+    currentSection: "blog",
     bodyClass: "blog-page",
     mainContent: `
       <div class="container">
@@ -356,67 +427,34 @@ function renderBlogPost(post, { prev, next }) {
   });
 }
 
-function renderLayout({ pageTitle, description, rootPrefix, bodyClass, mainContent }) {
-  return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${escapeHtml(pageTitle)}</title>
-    <meta name="description" content="${escapeHtml(description)}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    >
-    <link rel="stylesheet" href="${rootPrefix}/assets/css/site.css">
-    <script src="${rootPrefix}/assets/js/site.js" defer></script>
-  </head>
-  <body>
-    <div class="site-bg" aria-hidden="true">
-      <div class="site-bg__aurora site-bg__aurora--one"></div>
-      <div class="site-bg__aurora site-bg__aurora--two"></div>
-      <div class="site-bg__grid"></div>
-    </div>
+function renderLayout({ pageTitle, description, rootPrefix, currentSection, bodyClass, mainContent }) {
+  return renderTemplate("layout.njk", {
+    pageTitle,
+    description,
+    bodyClass,
+    mainContent,
+    ...createTemplateContext(rootPrefix, currentSection),
+  });
+}
 
-    <header class="topbar">
-      <div class="container topbar__inner">
-        <a class="brand" href="${rootPrefix}/index.html">
-          <span class="brand__mark">K</span>
-          <span class="brand__text">Khopa</span>
-        </a>
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-menu"
-          data-menu-toggle
-        >
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="nav" id="site-menu" data-menu>
-          <a href="${rootPrefix}/portfolio/index.html">Portfolio</a>
-          <a href="${rootPrefix}/resume/index.html">Resume</a>
-          <a href="${rootPrefix}/blog/index.html">Blog</a>
-          <a href="${rootPrefix}/apps/index.html">Apps</a>
-        </nav>
-      </div>
-    </header>
+function renderTemplate(templatePath, context) {
+  return nunjucksEnv.render(templatePath, context).trim();
+}
 
-    <main class="${bodyClass}">
-      ${mainContent}
-    </main>
+function resolveSiteHref(rootPrefix, relativePath) {
+  return rootPrefix === "." ? `./${relativePath}` : `${rootPrefix}/${relativePath}`;
+}
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <p>Khopa</p>
-        <p>&copy; <span data-year></span> Khopa</p>
-      </div>
-    </footer>
-  </body>
-</html>`;
+function createTemplateContext(rootPrefix, currentSection) {
+  return {
+    assetPrefix: rootPrefix === "." ? "." : rootPrefix,
+    currentSection,
+    homeHref: resolveSiteHref(rootPrefix, "index.html"),
+    portfolioHref: resolveSiteHref(rootPrefix, "portfolio/index.html"),
+    resumeHref: resolveSiteHref(rootPrefix, "resume/index.html"),
+    blogHref: resolveSiteHref(rootPrefix, "blog/index.html"),
+    appsHref: resolveSiteHref(rootPrefix, "apps/index.html"),
+  };
 }
 
 function createExcerpt(markdown, limit) {

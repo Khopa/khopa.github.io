@@ -1,56 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khopa | Visual Automated Attendant</title>
-    <meta name="description" content="Case study for Visual Automated Attendant, an enterprise visual IVR and call-routing product.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    >
-    <link rel="stylesheet" href="../assets/css/site.css">
-    <script src="../assets/js/site.js" defer></script>
-  </head>
-  <body>
-    <div class="site-bg" aria-hidden="true">
-      <div class="site-bg__aurora site-bg__aurora--one"></div>
-      <div class="site-bg__aurora site-bg__aurora--two"></div>
-      <div class="site-bg__grid"></div>
-    </div>
+{% extends "layout.njk" %}
+{% set pageTitle = "Khopa | Visual Automated Attendant" %}
+{% set description = "Case study for Visual Automated Attendant, an enterprise visual IVR and call-routing product." %}
+{% set bodyClass = "page-main" %}
 
-    <header class="topbar">
-  <div class="container topbar__inner">
-    <a class="brand" href="../index.html" aria-label="Khopa home">
-      <span class="brand__mark">K</span>
-      <span class="brand__text">Khopa</span>
-    </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="site-menu"
-      data-menu-toggle
-    >
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="nav" id="site-menu" data-menu>
-      <a href="../portfolio/index.html" aria-current="page">Portfolio</a>
-      <a href="../resume/index.html">Resume</a>
-      <a href="../blog/index.html">Blog</a>
-      <a href="../apps/index.html">Apps</a>
-    </nav>
-  </div>
-</header>
-
-    <main class="page-main">
-      
-        
+{% block mainContent %}
 <div class="container project-case">
   <section class="page-hero" data-reveal>
     <p class="eyebrow">Portfolio</p>
@@ -196,15 +149,4 @@
     </figure>
   </section>
 </div>
-
-      
-    </main>
-
-    <footer class="footer">
-  <div class="container footer__inner">
-    <p></p>
-    <p>&copy; <span data-year></span> Khopa</p>
-  </div>
-</footer>
-  </body>
-</html>
+{% endblock %}

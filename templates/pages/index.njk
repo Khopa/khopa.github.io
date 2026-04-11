@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+{% set pageTitle = "Khopa" %}
+{% set description = "Portfolio, resume, blog, apps." %}
+{% set bodyClass = "page-main home-main" %}
+
+{% block mainContent %}
+<div class="container">
+  <section class="page-hero home-hero" data-reveal>
+    <p class="eyebrow">Khopa</p>
+    <h1>Clément Perreau</h1>
+    <p>Personal site with a small portfolio, resume, and a few notes.</p>
+    <div class="project-links">
+      <a class="button button--primary" href="portfolio/index.html">Portfolio</a>
+      <a class="button button--secondary" href="resume/index.html">Resume</a>
+      <a class="button button--secondary" href="blog/index.html">Blog</a>
+      <a class="button button--secondary" href="apps/index.html">Apps</a>
+    </div>
+  </section>
+</div>
+{% endblock %}

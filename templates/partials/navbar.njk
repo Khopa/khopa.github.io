@@ -1,0 +1,26 @@
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="{{ homeHref }}" aria-label="Khopa home">
+      <span class="brand__mark">K</span>
+      <span class="brand__text">Khopa</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="site-menu" data-menu>
+      <a href="{{ portfolioHref }}"{% if currentSection == "portfolio" %} aria-current="page"{% endif %}>Portfolio</a>
+      <a href="{{ resumeHref }}"{% if currentSection == "resume" %} aria-current="page"{% endif %}>Resume</a>
+      <a href="{{ blogHref }}"{% if currentSection == "blog" %} aria-current="page"{% endif %}>Blog</a>
+      <a href="{{ appsHref }}"{% if currentSection == "apps" %} aria-current="page"{% endif %}>Apps</a>
+    </nav>
+  </div>
+</header>
