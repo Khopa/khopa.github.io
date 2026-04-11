@@ -73,6 +73,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 async function main() {
   const posts = await loadPosts();
   await fs.mkdir(outputDir, { recursive: true });
+  await cleanupBlogOutput(posts);
 
   await writeFile(path.join(outputDir, "index.html"), renderBlogIndex(posts));
 
@@ -95,6 +96,28 @@ async function main() {
 
   console.log(
     `Generated ${posts.length} blog post(s) into ${path.relative(rootDir, outputDir)} and rendered ${staticPageConfigs.length} static page(s) from Nunjucks templates.`
+  );
+}
+
+async function cleanupBlogOutput(posts) {
+  const expectedSlugs = new Set(posts.map((post) => post.slug));
+  const entries = await fs.readdir(outputDir, { withFileTypes: true });
+
+  await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(outputDir, entry.name);
+
+      // Remove old generated post folders when a source markdown file is deleted or renamed.
+      if (entry.isDirectory() && !expectedSlugs.has(entry.name)) {
+        await fs.rm(entryPath, { recursive: true, force: true });
+        return;
+      }
+
+      // Keep blog index and non-HTML assets, but prune stale generated html files.
+      if (entry.isFile() && entry.name !== "index.html" && entry.name.endsWith(".html")) {
+        await fs.rm(entryPath, { force: true });
+      }
+    })
   );
 }
 
@@ -368,7 +391,6 @@ function renderBlogIndex(posts) {
         <section class="blog-list__hero" data-reveal>
           <p class="eyebrow">Blog</p>
           <h1>Posts.</h1>
-          <p>Markdown in <code>content/blog/</code>. Static output.</p>
         </section>
         <section class="blog-list">
           ${list}
