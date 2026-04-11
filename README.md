@@ -1,6 +1,6 @@
 # khopa.github.io
 
-Static personal website for GitHub Pages.
+My personal website for GitHub Pages.
 
 ## Prerequisites
 
