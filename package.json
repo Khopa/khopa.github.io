@@ -8,6 +8,7 @@
   "scripts": {
     "build:blog": "node scripts/build-blog.mjs",
     "build:site": "node scripts/build-blog.mjs",
-    "build": "node scripts/build-blog.mjs"
+    "build": "node scripts/build-blog.mjs",
+    "update:motmot": "node scripts/update-motmot.mjs"
   }
 }
