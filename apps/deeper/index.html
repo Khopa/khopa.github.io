@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khopa | Deeper</title>
+  <meta name="description" content="Play Deeper, a puzzle roguelike for the Game Boy Advance, in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script src="../../assets/js/site.js" defer></script>
+  <style>
+    .emu-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* the GBA screen is 240x160 (3:2); EmulatorJS fills this box */
+    .emu-screen {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background: #121213;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(30, 30, 20, 0.25);
+    }
+
+    .emu-screen #game {
+      width: 100%;
+      height: 100%;
+    }
+
+    .emu-notes {
+      margin-top: 1.5rem;
+    }
+
+    .emu-notes table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+    }
+
+    .emu-notes th,
+    .emu-notes td {
+      text-align: left;
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .emu-notes th {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .emu-links a {
+      margin-right: 1.25rem;
+    }
+
+    .emu-hero {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .emu-hero img {
+      width: 160px;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(30, 30, 20, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__aurora site-bg__aurora--one"></div>
+    <div class="site-bg__aurora site-bg__aurora--two"></div>
+    <div class="site-bg__grid"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="../../index.html" aria-label="Khopa home">
+        <span class="brand__mark">K</span>
+        <span class="brand__text">Khopa</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="site-menu" data-menu>
+        <a href="../../portfolio/index.html">Portfolio</a>
+        <a href="../../resume/index.html">Resume</a>
+        <a href="../../blog/index.html">Blog</a>
+        <a href="../index.html" aria-current="page">Apps</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <section class="page-hero emu-hero" data-reveal>
+        <img src="box.png" alt="Deeper box art">
+        <div>
+          <p class="eyebrow">Apps · Game Boy Advance</p>
+          <h1>Deeper</h1>
+          <p>A puzzle roguelike for the Game Boy Advance, spin-off of <em>Dwarves Manager</em>: dig your way down
+            through a branching map of logic puzzles, monsters, walls and merchants, from the surface to the core.
+            Four languages, playable right here thanks to EmulatorJS.</p>
+        </div>
+      </section>
+
+      <section class="emu-wrap" data-reveal>
+        <div class="emu-screen">
+          <div id="game"></div>
+        </div>
+      </section>
+
+      <section class="app-card emu-notes" data-reveal>
+        <h2>Controls</h2>
+        <table>
+          <tr><th>Arrow keys</th><td>D-pad — move the cursor, choose the next room on the map</td></tr>
+          <tr><th>Z</th><td>A — dig, place ore or a block, extend the gallery, buy, descend; hammer it at a wall</td></tr>
+          <tr><th>X</th><td>B — mark a cell, erase, back up, next block; leave the counter</td></tr>
+          <tr><th>Q</th><td>L — use a hint token</td></tr>
+          <tr><th>E</th><td>R — turn the block in a cavity</td></tr>
+          <tr><th>V</th><td>SELECT — the rules of the room and its controls</td></tr>
+          <tr><th>Enter</th><td>START — pause menu (resume, give up for a life, save and quit)</td></tr>
+        </table>
+        <p>Hold A or B while moving to act on every cell the cursor crosses. Keys can be remapped, and gamepads are
+          supported, from the settings menu at the bottom right of the screen. Your run, gear and logbook are saved
+          in the browser (battery save).</p>
+        <p class="emu-links">
+          <a href="https://github.com/Khopa/deeper-gba">Source code on GitHub</a>
+          <a href="Deeper.gba" download>Download the ROM for a real GBA</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  &nbsp;
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p></p>
+      <p>&copy; <span data-year></span> Khopa</p>
+    </div>
+  </footer>
+
+  <script>
+    // EmulatorJS (https://emulatorjs.org) with the mGBA core. The ROM is the
+    // current build of https://github.com/Khopa/deeper-gba, copied next to
+    // this page (GitHub assets are not served with CORS headers).
+    EJS_player = "#game";
+    EJS_core = "gba";
+    EJS_gameName = "Deeper";
+    EJS_gameUrl = "Deeper.gba";
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+    EJS_language = "en-US";   // the CDN has no "fr" localization file: without this the loader crashes on French browsers
+    EJS_color = "#c8892a";
+    EJS_backgroundColor = "#121213";
+    EJS_startOnLoaded = false;
+    EJS_defaultOptions = { "save-state-location": "browser" };
+  </script>
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+
+</html>
