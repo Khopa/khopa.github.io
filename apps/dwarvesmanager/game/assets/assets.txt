@@ -9,10 +9,8 @@ i:b:/data/sprites/titlescreen.png:28658:1
 i:b:/data/sprites/title.png:256659:1
 i:b:/data/sprites/eniblogo.png:58853:1
 i:b:/data/sprites/objectAtlas.png:27507:1
-i:b:/data/sprites/levels.pdn:1011112:1
 i:b:/data/sprites/logo.png:205626:1
 i:b:/data/sprites/guiAtlas.png:3577:1
-i:b:/data/sprites/carreau.py:1208:1
 i:b:/data/sprites/social.png:10752:1
 i:b:/data/sprites/iconAtlas.png:28090:1
 i:b:/data/sprites/flags.png:22290:1
@@ -76,7 +74,6 @@ i:b:/data/tileset/dwarf/barman_head.png:8686:1
 i:b:/data/tileset/hands.png:445:1
 i:b:/data/uiskinBig.atlas:2905:1
 i:b:/data/verdana39.png:24390:1
-i:b:/data/sftpConf.xml:87:1
 i:b:/data/font.fnt:15481:1
 i:d:/data/particles:0:1
 i:b:/data/particles/enchant.p:5783:1
