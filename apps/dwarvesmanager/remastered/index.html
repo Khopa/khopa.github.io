@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#120c08">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Dwarves Manager Remastered: manage a dwarven diamond mine. Dig, build taverns, dorms and workshops, keep your dwarves happy and find every diamond.">
+  <title>Dwarves Manager Remastered</title>
+  <link rel="icon" href="assets/sprites/level1.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.min.js",
+        "three/addons/": "./vendor/three/addons/"
+      }
+    }
+  </script>
+  <script src="vendor/fengari-web.js"></script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="gl" aria-label="Game view"></canvas>
+    <div id="vignette"></div>
+    <div id="labels"></div>
+
+    <div id="hud" hidden>
+      <div id="topbar">
+        <div id="stats">
+          <div class="pill" id="st-money" title="Gold"><span class="ico coin"></span><b>0</b></div>
+          <div class="pill" id="st-diamonds" title="Diamonds"><span class="ico gem"></span><b>0</b><small>/0</small></div>
+          <div class="pill" id="st-wages" title="Wages"><span class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" class="track"/><circle cx="18" cy="18" r="15" class="bar"/></svg></span><b>00:00</b><small id="st-payroll"></small></div>
+          <div class="pill dim" id="st-time" title="Time"><span class="ico clock"></span><b>00:00</b></div>
+        </div>
+        <div id="controls">
+          <div class="seg" id="speed">
+            <button data-speed="0" aria-label="Pause"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+            <button data-speed="1" aria-label="Speed 1x"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></button>
+            <button data-speed="2" aria-label="Speed 2x"><svg viewBox="0 0 24 24"><path d="M3 5l9 7-9 7zM12 5l9 7-9 7z"/></svg></button>
+            <button data-speed="4" aria-label="Speed 4x"><svg viewBox="0 0 24 24"><path d="M1 6l7 6-7 6zM8 6l7 6-7 6zM15 6l7 6-7 6z"/></svg></button>
+          </div>
+          <button class="iconbtn" id="btn-menu" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+      <div id="camtools">
+        <button class="iconbtn sm" id="cam-left" aria-label="Rotate left"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2-5M5 4v4h4" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></button>
+        <button class="iconbtn sm" id="cam-right" aria-label="Rotate right"><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2-5M19 4v4h-4" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></button>
+        <button class="iconbtn sm" id="cam-in" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+        <button class="iconbtn sm" id="cam-out" aria-label="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+      <div id="log"></div>
+      <div id="info" hidden></div>
+      <div id="bottom">
+        <div id="hint" hidden></div>
+        <div id="subbar" hidden><div id="subtools"></div></div>
+        <div id="toolbar"></div>
+      </div>
+      <div id="celebrate" hidden></div>
+    </div>
+
+    <div id="screens">
+      <section id="loading" class="screen show">
+        <div class="loader"><div class="pick"></div><p id="loading-text">Digging the mine…</p></div>
+      </section>
+      <section id="title" class="screen">
+        <img class="logo" src="assets/sprites/title.png" alt="Dwarves Manager Remastered">
+        <p class="subtitle">Remastered</p>
+        <nav class="menu">
+          <button class="btn primary" data-act="play"></button>
+          <button class="btn" data-act="continue" hidden></button>
+          <button class="btn" data-act="options"></button>
+          <button class="btn" data-act="credits"></button>
+        </nav>
+      </section>
+      <section id="levels" class="screen">
+        <div class="panel wide">
+          <header><button class="iconbtn back" data-act="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></button><h2 data-t="chooseLevel"></h2></header>
+          <div id="level-grid"></div>
+        </div>
+      </section>
+      <section id="options" class="screen">
+        <div class="panel">
+          <header><button class="iconbtn back" data-act="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></button><h2 data-t="options"></h2></header>
+          <div class="form">
+            <label><span data-t="language"></span><div class="seg" id="opt-lang"><button data-v="en">English</button><button data-v="fr">Français</button></div></label>
+            <label><span data-t="music"></span><input type="range" id="opt-music" min="0" max="1" step="0.05"></label>
+            <label><span data-t="sfx"></span><input type="range" id="opt-sfx" min="0" max="1" step="0.05"></label>
+            <label><span data-t="quality"></span><div class="seg" id="opt-quality"><button data-v="auto" data-t="auto"></button><button data-v="low" data-t="low"></button><button data-v="medium" data-t="medium"></button><button data-v="high" data-t="high"></button></div></label>
+            <label><span data-t="gauges"></span><div class="seg" id="opt-gauges"><button data-v="always" data-t="always"></button><button data-v="warn" data-t="warn"></button></div></label>
+          </div>
+          <h3 data-t="controlsTitle"></h3>
+          <p class="small" data-t="controlsText"></p>
+        </div>
+      </section>
+      <section id="credits" class="screen">
+        <div class="panel">
+          <header><button class="iconbtn back" data-act="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></button><h2 data-t="credits"></h2></header>
+          <p data-t="creditsText"></p>
+        </div>
+      </section>
+      <section id="pause" class="screen dim">
+        <div class="panel narrow">
+          <h2 data-t="paused"></h2>
+          <p class="small" id="pause-level"></p>
+          <nav class="menu">
+            <button class="btn primary" data-act="resume"></button>
+            <button class="btn" data-act="save"></button>
+            <button class="btn" data-act="restart"></button>
+            <button class="btn" data-act="options"></button>
+            <button class="btn" data-act="quit"></button>
+          </nav>
+        </div>
+      </section>
+      <section id="end" class="screen dim">
+        <div class="panel narrow end">
+          <h2 id="end-title"></h2>
+          <p id="end-text"></p>
+          <div id="end-stats"></div>
+          <nav class="menu" id="end-actions"></nav>
+        </div>
+      </section>
+      <section id="popup" class="screen dim popup">
+        <div class="panel parchment">
+          <h2 id="popup-title"></h2>
+          <p id="popup-text"></p>
+          <nav class="menu"><button class="btn primary" id="popup-ok">OK</button></nav>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

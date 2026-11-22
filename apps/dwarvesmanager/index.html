@@ -3,158 +3,299 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Khopa | Dwarves Manager</title>
-  <meta name="description" content="Play Dwarves Manager, a dwarven diamond mine management game, in your browser.">
+  <meta name="description" content="Play Dwarves Manager in your browser: the brand-new 3D Remastered edition, or the original libGDX game.">
+  <meta name="theme-color" content="#120c08">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/site.css">
-  <script src="../../assets/js/site.js" defer></script>
   <style>
-    .game-wrap {
-      max-width: 1100px;
+    :root {
+      --bg: #100b08;
+      --panel: rgba(32, 22, 15, 0.82);
+      --line: rgba(214, 160, 92, 0.3);
+      --gold: #f2c25c;
+      --gold-2: #ffdf8e;
+      --text: #f4e6cf;
+      --muted: #bda68a;
+      --cyan: #7fe6ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Manrope, system-ui, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    /* the cave: the remastered screenshot, blurred and darkened, behind everything */
+    .cave {
+      position: fixed;
+      inset: -40px;
+      background: url(remastered.jpg) center / cover no-repeat;
+      filter: blur(14px) brightness(0.32) saturate(1.2);
+      z-index: -2;
+    }
+
+    .cave::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 20%, rgba(255, 170, 70, 0.18), transparent 60%),
+        radial-gradient(ellipse at 50% 120%, rgba(0, 0, 0, 0.8), transparent 60%);
+    }
+
+    a { color: var(--gold-2); }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: calc(1rem + env(safe-area-inset-top)) 1.25rem 0;
+      font-size: 0.95rem;
+    }
+
+    .top a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .top a:hover { color: var(--text); }
+
+    .brand { display: inline-flex; align-items: center; gap: 0.55rem; }
+
+    .brand b {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(180deg, #f6cf74, #c98f2e);
+      color: #2a1a08;
+      font-weight: 800;
+    }
+
+    header.hero {
+      text-align: center;
+      padding: 2.5rem 1.25rem 1.5rem;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    /* the game lays out a 720px-tall virtual screen and follows the frame's aspect ratio */
-    .game-screen {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #0d0d0d;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 24px 60px rgba(30, 30, 20, 0.25);
+    .logo {
+      width: min(680px, 92vw);
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.8));
     }
 
-    .game-screen iframe {
+    .hero p {
+      margin: 0.75rem auto 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      max-width: 1180px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+    }
+
+    .choice {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .choice:hover {
+      transform: translateY(-4px);
+      border-color: rgba(242, 194, 92, 0.7);
+      box-shadow: 0 36px 90px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(242, 194, 92, 0.25);
+    }
+
+    .choice.featured { border-color: rgba(127, 230, 255, 0.45); }
+
+    .shot {
       display: block;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #0b0806;
+    }
+
+    .shot img {
       width: 100%;
       height: 100%;
-      border: 0;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
     }
 
-    .game-notes {
-      margin-top: 1.5rem;
+    .choice:hover .shot img { transform: scale(1.04); }
+
+    .classic .shot img { image-rendering: pixelated; }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(16, 11, 8, 0.85);
+      border: 1px solid var(--line);
+      color: var(--gold-2);
     }
 
-    .game-notes table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.75rem;
+    .featured .badge { color: var(--cyan); border-color: rgba(127, 230, 255, 0.5); }
+
+    .body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+
+    .body h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.85rem;
+      margin: 0;
+      color: var(--gold-2);
     }
 
-    .game-notes th,
-    .game-notes td {
-      text-align: left;
-      padding: 0.35rem 0.5rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
+    .body .kind { color: var(--muted); font-size: 0.9rem; margin: 0.15rem 0 0.8rem; }
 
-    .game-notes th {
-      font-weight: 700;
-      white-space: nowrap;
-    }
+    .body ul { margin: 0 0 1.4rem; padding-left: 1.15rem; color: var(--text); }
 
-    .game-links a {
-      margin-right: 1.25rem;
-    }
+    .body li { margin: 0.2rem 0; }
 
-    .game-hero {
-      display: flex;
-      gap: 2rem;
+    .body li::marker { color: var(--gold); }
+
+    .actions { margin-top: auto; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+
+    .play {
+      display: inline-flex;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: #2a1a08;
+      background: linear-gradient(180deg, #f6cf74, #c98f2e);
+      border: 1px solid #ffe7a6;
+      box-shadow: 0 8px 24px rgba(201, 143, 46, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    .game-hero img {
-      width: 160px;
-      border-radius: 10px;
-      box-shadow: 0 12px 30px rgba(30, 30, 20, 0.2);
+    .play:hover { filter: brightness(1.08); }
+
+    .play svg { width: 18px; height: 18px; }
+
+    .featured .play {
+      background: linear-gradient(180deg, #a6f1ff, #3fb6dc);
+      border-color: #d6f8ff;
+      color: #062430;
+      box-shadow: 0 8px 26px rgba(63, 182, 220, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .note { font-size: 0.85rem; color: var(--muted); }
+
+    footer {
+      max-width: 1180px;
+      margin: 2.5rem auto 0;
+      padding: 1.5rem 1.25rem calc(2.5rem + env(safe-area-inset-bottom));
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      border-top: 1px solid rgba(214, 160, 92, 0.15);
+    }
+
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 820px) {
+      .choices { grid-template-columns: 1fr; }
+      header.hero { padding-top: 1.5rem; }
+      .body h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
 
 <body>
-  <div class="site-bg" aria-hidden="true">
-    <div class="site-bg__aurora site-bg__aurora--one"></div>
-    <div class="site-bg__aurora site-bg__aurora--two"></div>
-    <div class="site-bg__grid"></div>
-  </div>
+  <div class="cave" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="../../index.html" aria-label="Khopa home">
-        <span class="brand__mark">K</span>
-        <span class="brand__text">Khopa</span>
-      </a>
+  <nav class="top">
+    <a class="brand" href="../../index.html"><b>K</b>Khopa</a>
+    <a href="../index.html">← All apps</a>
+  </nav>
 
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav" id="site-menu" data-menu>
-        <a href="../../portfolio/index.html">Portfolio</a>
-        <a href="../../blog/index.html">Blog</a>
-        <a href="../index.html" aria-current="page">Apps</a>
-      </nav>
-    </div>
+  <header class="hero">
+    <img class="logo" src="remastered/assets/sprites/title.png" alt="Dwarves Manager">
+    <p>Run a dwarven diamond mine. Recruit miners, craftsmen, bartenders and enchanters, dig out the galleries,
+      build workshops, taverns and dorms, and keep your dwarves equipped, refreshed and rested before payday
+      drains the treasury. Seven tutorials and eight levels.</p>
   </header>
 
-  <main class="page-main">
-    <div class="container">
-      <section class="page-hero game-hero" data-reveal>
-        <img src="box.png" alt="Dwarves Manager icon">
-        <div>
-          <p class="eyebrow">Apps · PC &amp; Android game</p>
-          <h1>Dwarves Manager</h1>
-          <p>Run a dwarven diamond mine: recruit miners, craftsmen, bartenders and enchanters, mark out the galleries
-            to dig, build workshops, taverns and dorms, and keep your dwarves equipped, refreshed and rested before
-            payday drains the treasury. Seven tutorials and eight levels: the original libGDX game, ported to run
-            right here in the browser.</p>
+  <main class="choices">
+    <article class="choice featured">
+      <a class="shot" href="remastered/index.html" tabindex="-1"><img src="remastered.jpg" alt="Dwarves Manager Remastered: a tavern, a dorm and a workshop lit by torches and a hearth"></a>
+      <span class="badge">New · 3D</span>
+      <div class="body">
+        <h2>Remastered</h2>
+        <p class="kind">Brand-new three.js edition · desktop, phone &amp; tablet</p>
+        <ul>
+          <li>Isometric 3D mine you can rotate and zoom, with torches, glowing gems and diamonds</li>
+          <li>All the dwarves, rooms, objects, tutorials and levels of the original</li>
+          <li>Touch controls, English &amp; French, saves in your browser</li>
+        </ul>
+        <div class="actions">
+          <a class="play" href="remastered/index.html"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z" /></svg>Play Remastered</a>
+          <span class="note">Opens full screen</span>
         </div>
-      </section>
+      </div>
+    </article>
 
-      <section class="game-wrap" data-reveal>
-        <div class="game-screen">
-          <iframe src="game/index.html" title="Dwarves Manager" allow="autoplay; fullscreen"></iframe>
+    <article class="choice classic">
+      <a class="shot" href="classic.html" tabindex="-1"><img src="classic.jpg" alt="Dwarves Manager classic: the original top-down view of a tavern"></a>
+      <span class="badge">Original · libGDX</span>
+      <div class="body">
+        <h2>Classic</h2>
+        <p class="kind">The original Android &amp; desktop game, ported to the browser</p>
+        <ul>
+          <li>The game as it was released, with its pixel-art top-down view</li>
+          <li>Compiled from the original Java source with TeaVM</li>
+          <li>Best played with a mouse and keyboard</li>
+        </ul>
+        <div class="actions">
+          <a class="play" href="classic.html"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z" /></svg>Play Classic</a>
+          <span class="note">Controls on the next page</span>
         </div>
-      </section>
-
-      <section class="app-card game-notes" data-reveal>
-        <h2>Controls</h2>
-        <table>
-          <tr><th>Left click</th><td>Use the side panel; place dwarves, rooms and objects</td></tr>
-          <tr><th>Click and drag</th><td>Mark an area to dig (pickaxe mode) or draw a room</td></tr>
-          <tr><th>Right click / drag</th><td>Unmark a dig area or erase a room area; remove an object or a dwarf while placing</td></tr>
-          <tr><th>Middle drag</th><td>Scroll the map</td></tr>
-          <tr><th>Arrow keys / screen edge</th><td>Scroll the map</td></tr>
-          <tr><th>Mouse wheel</th><td>Zoom the map around the cursor; scroll the side panel lists</td></tr>
-          <tr><th>R</th><td>Rotate the object you are placing</td></tr>
-          <tr><th>Esc</th><td>Back to the main panel</td></tr>
-          <tr><th>S / F9</th><td>Quick save / quick load</td></tr>
-          <tr><th>F10</th><td>Game menu (save, load, options)</td></tr>
-        </table>
-        <p>Start with <em>New Game</em> for the tutorials, or pick any level from <em>Levels</em>. Saves, options and
-          best times are kept in your browser. Click inside the game first so it receives the keyboard.</p>
-        <p class="game-links">
-          <a href="game/index.html">Play in a full window</a>
-          <a href="https://github.com/Khopa/DwarvesManager">Source code on GitHub</a>
-          <a href="https://play.google.com/store/apps/details?id=enibdevlab.dwarves">Android version</a>
-        </p>
-      </section>
-    </div>
+      </div>
+    </article>
   </main>
 
-  &nbsp;
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p></p>
-      <p>&copy; <span data-year></span> Khopa</p>
-    </div>
+  <footer>
+    <a href="https://github.com/Khopa/DwarvesManager">Original source code</a>
+    <a href="https://play.google.com/store/apps/details?id=enibdevlab.dwarves">Android version</a>
+    <a href="../../portfolio/dwarves-manager.html">About the project</a>
   </footer>
 </body>
 

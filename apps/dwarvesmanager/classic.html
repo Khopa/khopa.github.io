@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khopa | Dwarves Manager Classic</title>
+  <meta name="description" content="Play Dwarves Manager, a dwarven diamond mine management game, in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script src="../../assets/js/site.js" defer></script>
+  <style>
+    .game-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* the game lays out a 720px-tall virtual screen and follows the frame's aspect ratio */
+    .game-screen {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0d0d0d;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(30, 30, 20, 0.25);
+    }
+
+    .game-screen iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .game-notes {
+      margin-top: 1.5rem;
+    }
+
+    .game-notes table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+    }
+
+    .game-notes th,
+    .game-notes td {
+      text-align: left;
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .game-notes th {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .game-links a {
+      margin-right: 1.25rem;
+    }
+
+    .game-hero {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .game-hero img {
+      width: 160px;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(30, 30, 20, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__aurora site-bg__aurora--one"></div>
+    <div class="site-bg__aurora site-bg__aurora--two"></div>
+    <div class="site-bg__grid"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="../../index.html" aria-label="Khopa home">
+        <span class="brand__mark">K</span>
+        <span class="brand__text">Khopa</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="site-menu" data-menu>
+        <a href="../../portfolio/index.html">Portfolio</a>
+        <a href="../../blog/index.html">Blog</a>
+        <a href="../index.html" aria-current="page">Apps</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <section class="page-hero game-hero" data-reveal>
+        <img src="box.png" alt="Dwarves Manager icon">
+        <div>
+          <p class="eyebrow"><a href="index.html">Dwarves Manager</a> · Classic edition</p>
+          <h1>Dwarves Manager Classic</h1>
+          <p>Run a dwarven diamond mine: recruit miners, craftsmen, bartenders and enchanters, mark out the galleries
+            to dig, build workshops, taverns and dorms, and keep your dwarves equipped, refreshed and rested before
+            payday drains the treasury. Seven tutorials and eight levels: the original libGDX game, ported to run
+            right here in the browser. Looking for the new 3D version? <a href="remastered/index.html">Play Dwarves Manager
+            Remastered</a>.</p>
+        </div>
+      </section>
+
+      <section class="game-wrap" data-reveal>
+        <div class="game-screen">
+          <iframe src="game/index.html" title="Dwarves Manager" allow="autoplay; fullscreen"></iframe>
+        </div>
+      </section>
+
+      <section class="app-card game-notes" data-reveal>
+        <h2>Controls</h2>
+        <table>
+          <tr><th>Left click</th><td>Use the side panel; place dwarves, rooms and objects</td></tr>
+          <tr><th>Click and drag</th><td>Mark an area to dig (pickaxe mode) or draw a room</td></tr>
+          <tr><th>Right click / drag</th><td>Unmark a dig area or erase a room area; remove an object or a dwarf while placing</td></tr>
+          <tr><th>Middle drag</th><td>Scroll the map</td></tr>
+          <tr><th>Arrow keys / screen edge</th><td>Scroll the map</td></tr>
+          <tr><th>Mouse wheel</th><td>Zoom the map around the cursor; scroll the side panel lists</td></tr>
+          <tr><th>R</th><td>Rotate the object you are placing</td></tr>
+          <tr><th>Esc</th><td>Back to the main panel</td></tr>
+          <tr><th>S / F9</th><td>Quick save / quick load</td></tr>
+          <tr><th>F10</th><td>Game menu (save, load, options)</td></tr>
+        </table>
+        <p>Start with <em>New Game</em> for the tutorials, or pick any level from <em>Levels</em>. Saves, options and
+          best times are kept in your browser. Click inside the game first so it receives the keyboard.</p>
+        <p class="game-links">
+          <a href="index.html">← Choose a version</a>
+          <a href="game/index.html">Play in a full window</a>
+          <a href="https://github.com/Khopa/DwarvesManager">Source code on GitHub</a>
+          <a href="https://play.google.com/store/apps/details?id=enibdevlab.dwarves">Android version</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  &nbsp;
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p></p>
+      <p>&copy; <span data-year></span> Khopa</p>
+    </div>
+  </footer>
+</body>
+
+</html>
