@@ -13,7 +13,11 @@ const nunjucksEnv = nunjucks.configure(templatesDir, {
   noCache: true,
 });
 
-const staticPageConfigs = [
+// The resume page is switched off for now: it is not generated and no page links to it.
+// Set to true to bring it back.
+const RESUME_ENABLED = false;
+
+const allStaticPageConfigs = [
   {
     templatePath: "pages/index.njk",
     outputPath: "index.html",
@@ -63,6 +67,7 @@ const staticPageConfigs = [
     currentSection: "portfolio",
   },
 ];
+const staticPageConfigs = allStaticPageConfigs.filter((c) => RESUME_ENABLED || c.currentSection !== "resume");
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -473,6 +478,7 @@ function createTemplateContext(rootPrefix, currentSection) {
     currentSection,
     homeHref: resolveSiteHref(rootPrefix, "index.html"),
     portfolioHref: resolveSiteHref(rootPrefix, "portfolio/index.html"),
+    resumeEnabled: RESUME_ENABLED,
     resumeHref: resolveSiteHref(rootPrefix, "resume/index.html"),
     blogHref: resolveSiteHref(rootPrefix, "blog/index.html"),
     appsHref: resolveSiteHref(rootPrefix, "apps/index.html"),

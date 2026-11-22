@@ -18,7 +18,7 @@
 
     <nav class="nav" id="site-menu" data-menu>
       <a href="{{ portfolioHref }}"{% if currentSection == "portfolio" %} aria-current="page"{% endif %}>Portfolio</a>
-      <a href="{{ resumeHref }}"{% if currentSection == "resume" %} aria-current="page"{% endif %}>Resume</a>
+      {% if resumeEnabled %}<a href="{{ resumeHref }}"{% if currentSection == "resume" %} aria-current="page"{% endif %}>Resume</a>{% endif %}
       <a href="{{ blogHref }}"{% if currentSection == "blog" %} aria-current="page"{% endif %}>Blog</a>
       <a href="{{ appsHref }}"{% if currentSection == "apps" %} aria-current="page"{% endif %}>Apps</a>
     </nav>

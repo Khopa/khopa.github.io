@@ -25,7 +25,7 @@ Build outputs are written directly to the published HTML files in this repositor
 
 - index.html
 - apps/index.html
-- resume/index.html
+- resume/index.html (only when RESUME_ENABLED is true in scripts/build-blog.mjs; currently off)
 - portfolio/*.html
 - blog/index.html and blog/<slug>/index.html
 
