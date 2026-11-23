@@ -154,8 +154,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .loader .pick { width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 50%; border: 4px solid rgba(242,194,92,.2); border-top-color: var(--gold); animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 #title { background: linear-gradient(180deg, rgba(10,6,4,.25), rgba(10,6,4,.05) 40%, rgba(10,6,4,.6)); }
-#title .logo { width: min(86vw, 720px); filter: drop-shadow(0 6px 10px rgba(0,0,0,.7)); }
-#title .subtitle { margin: 4px 0 26px; font-family: var(--serif); letter-spacing: .4em; text-transform: uppercase; color: var(--gold); font-size: 14px; text-shadow: 0 2px 4px #000; }
+#title .logo { width: min(90vw, 760px); margin-bottom: 26px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.6)); }
 .menu { display: flex; flex-direction: column; gap: 10px; width: min(320px, 80vw); }
 .btn { padding: 12px 18px; border-radius: 12px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(60,42,28,.95), rgba(36,25,17,.95)); color: var(--text); font-weight: 650; font-size: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.07); transition: transform .08s, filter .15s; }
 .btn:hover { filter: brightness(1.15); }
@@ -222,8 +221,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .card .name { min-height: 0; font-size: 11px; }
   #camtools { flex-direction: row; top: auto; bottom: calc(10px + var(--safe-b)); right: calc(10px + var(--safe-r)); }
   #info { top: calc(52px + var(--safe-t)); bottom: auto; left: auto; width: 260px; }
-  #title .logo { width: min(60vw, 520px); }
-  #title .subtitle { margin-bottom: 10px; }
+  #title .logo { width: min(64vw, 540px); margin-bottom: 10px; }
   .menu { gap: 6px; }
   .btn { padding: 8px 14px; }
 }
